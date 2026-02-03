@@ -1,10 +1,4 @@
 # 📦 Product Catalogue - Laravel
-
-<p align="center">
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 Une application web de catalogue de produits développée avec Laravel dans le cadre du module M205 - Développement Web Avancé.
 
 ## 🎯 Contexte Académique
