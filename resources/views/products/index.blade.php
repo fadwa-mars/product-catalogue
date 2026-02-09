@@ -11,7 +11,7 @@
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <x-product-card :product="$product" />
             </div>
-        @endforeach
+        @endforeach 
     </div>
 </div>
 @endsection
