@@ -12,5 +12,8 @@
         <a href="{{ route('contact') }}" class="list-group-item list-group-item-action">
             Contact
         </a>
+        <a href="{{ route('products.create') }}" class="list-group-item list-group-item-action">
+            Add produit
+        </a>
     </div>
 </div>

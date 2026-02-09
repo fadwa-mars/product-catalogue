@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProductRequest;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,16 +14,21 @@ class ProductController extends Controller
         ['id' => 4, 'title' => 'NXATHEF002', 'price' => 'Intel i7 10th Gen', 'image' => 'NXATHEF002.jpg', 'description' => 'Portable professionnel avec écran Full HD.'],
     ];
 
-    public function index() {
+    /**
+     * Afficher la liste des produits
+     */
+    public function index()
+    {
         $products = $this->products;
         return view('products.index', ['products' => $products]);
     }
 
-    public function show($id) {
-        $products = $this->products;
-        
-        // Méthode find personnalisée
-        $product = $this->find($products, $id);
+    /**
+     * Afficher les détails d'un produit
+     */
+    public function show($id)
+    {
+        $product = $this->find($id);
         
         if (!$product) {
             abort(404, 'Produit introuvable');
@@ -30,8 +36,35 @@ class ProductController extends Controller
         
         return view('products.show', compact('product'));
     }
-    private function find($products, $id) {
-        foreach ($products as $item) {
+
+    /**
+     * Afficher le formulaire de création
+     */
+    public function create()
+    {
+        return view('products.create');
+    }
+
+    /**
+     * Enregistrer un nouveau produit avec validation
+     */
+    public function store(CreateProductRequest $request)
+    {
+        // Les données sont déjà validées par CreateProductRequest
+        $validated = $request->validated();
+        
+        // Rediriger avec message de succès
+        return redirect()
+            ->route('products.create')
+            ->with('success', 'Le produit a été ajouté avec succès !');
+    }
+
+    /**
+     * Fonction find pour chercher un produit par ID
+     */
+    private function find($id)
+    {
+        foreach ($this->products as $item) {
             if ($item['id'] == $id) {
                 return $item;
             }
